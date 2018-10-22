@@ -1,0 +1,57 @@
+@font-face {
+	font-family: "PeacewordFont";
+	src: url('custom.ttf');
+}
+
+body.backgroundcolor
+{
+	background-color: rgb(39, 40,51);
+	width: 20rem;
+	color:white;
+}
+
+.next
+{
+	width: 100%;
+}
+
+.icons
+{
+	width: 1.5rem;
+}
+
+.logo
+{
+	width: auto;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.label
+{
+	font-family: "PeacewordFont";
+
+}
+
+.value
+{
+	font-family: "PeacewordFont";
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+#autofill
+{
+	font-family: "PeacewordFont";
+	color: rgba(185,67,88);
+}
+
+#copypass
+{
+	font-family: "PeacewordFont";
+}
+
+input
+{
+	width: 100%;
+}
