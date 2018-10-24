@@ -59,6 +59,11 @@ function genPassword(input) {
 	password = sha256(_e6515f433f2a7e6bb65db3981545413c._834392b2e51d87ceaf1f532a275c2b824fed163e + text);
 	
 
+	/*TODO: 
+		- Gérer les longueurs paramétrables (resalt le salt pour illimité longueur)
+		- Gérer ajout d'une majuscule
+		- Gérer ajout d'un caractère spécial
+	*/
 	password = password.substring(0, 16); //16 len
 	document.getElementById('website').textContent = input;
 	document.getElementById('password').textContent = password;
@@ -109,10 +114,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			showAlert('Password successfully copied in your clipboard !');
 		});
 
-		var manual = document.getElementById('manualinput');
-		manual.addEventListener("keyup", function () {
-			//console.log("MANUAL:" + manual.value);
-			genPassword(manual.value);
+		$('#manualinput').on("change keyup", () => {
+			var a = $('#manualinput').val().trim();
+			if (a.length > 0)
+				genPassword(a);
+		});
+
+		$('#manualinput').on("paste", () => {
+			setTimeout(() =>{
+				var a = $('#manualinput').val().trim();
+				if (a.length > 0)
+					genPassword(a);
+			}, 100);
 		});
 
 		load_options(() => {
