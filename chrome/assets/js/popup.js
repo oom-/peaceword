@@ -33,6 +33,7 @@ function load_options(callback) {
 	chrome.storage.sync.get({ minlen: "16", needupercase: true, needspecialchar: true, _834392b2e51d87ceaf1f532a275c2b824fed163e: null },
 		(options) => {
 			_e6515f433f2a7e6bb65db3981545413c = options;
+			console.log('OPTIONS:', options);
 			callback();
 		});
 }
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.execCommand('copy');
 			document.body.removeChild(tmpel);
 			e.preventDefault();
+			showAlert('Password successfully copied in your clipboard !');
 		});
 
 		var manual = document.getElementById('manualinput');

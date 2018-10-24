@@ -41,17 +41,23 @@ body.backgroundcolor
 	margin-bottom: 6px;
 }
 
-#autofill, #copypass,  #savebutton, #copysalt
+#autofill, #copypass,  #savebutton, #copysalt, #syncbutton
 {
 	font-family: "PeacewordFont";
 	color: rgba(185,67,88);
 }
 
 
-#autofill:hover, #copypass:hover, #savebutton:hover, #copysalt:hover
+#autofill:hover, #copypass:hover, #savebutton:hover, #copysalt:hover, #syncbutton:hover
 {
 	color: rgb(230, 91, 116);
 	text-decoration: none;
+}
+
+#syncbutton.disabled, #syncbutton.disabled:hover
+{
+	color: rgb(84, 84, 84);
+	cursor: default;
 }
 
 input
