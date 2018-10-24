@@ -41,16 +41,17 @@ body.backgroundcolor
 	margin-bottom: 6px;
 }
 
-#autofill
+#autofill, #copypass,  #savebutton, #copysalt
 {
 	font-family: "PeacewordFont";
 	color: rgba(185,67,88);
 }
 
-#copypass
+
+#autofill:hover, #copypass:hover, #savebutton:hover, #copysalt:hover
 {
-	font-family: "PeacewordFont";
-	color: rgba(185,67,88);
+	color: rgb(230, 91, 116);
+	text-decoration: none;
 }
 
 input
@@ -62,4 +63,14 @@ input
 {
 	width: 57%;
     height: 80%;
+}
+
+.padbot5px
+{
+	padding-bottom: 5px;
+}
+
+#popupmessage
+{
+	margin-bottom: 0;
 }

@@ -9,7 +9,8 @@
 		<link rel="stylesheet" href="assets/css/switch.css" />
 	</head>
 	<script src="assets/js/jquery-3.3.1.min.js"></script>
-	<script src="assets/js/popup.js"></script>
+	<script src="assets/js/settings.js"></script>
+	<script src="assets/js/qrcode.min.js"></script>
 	
 	<body class="backgroundcolor">
 		<div class="container next">		
@@ -22,7 +23,7 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-auto"><img class="logo" src="assets/img/logo.png"></div>
 			</div>
-			<div class="row">
+			<div class="row padbot5px">
 				<div class="col-7 label">len min: </div>
 				<div class="col-4 text-center"><input id="lensetting" type="number" value="16"></div>
 			</div>
@@ -30,7 +31,7 @@
 				<div class="col-7 label">need uppercase: </div>
 				<div class="col-4 d-flex justify-content-center"><div class="checkbox checbox-switch switch-primary">
 					<label>
-						<input type="checkbox" name="" checked="" />
+						<input id="needupercasecheckbox" type="checkbox" name="" checked="" />
 						<span></span>
 					</label>
 				 </div></div>
@@ -39,16 +40,29 @@
 				<div class="col-7 label">need specialchar: </div>
 				<div class="col-4 d-flex justify-content-center"><div class="checkbox checbox-switch switch-primary">
 					<label>
-						<input type="checkbox" name="" checked="" />
+						<input id="needspecialcharcheckbox" type="checkbox" name="" checked="" />
 						<span></span>
 					</label>
 				 </div>
 				</div>
 			</div><br>
 			<div class="row d-flex justify-content-center">
-				<div class="col-auto"><a href="#" id="autofill">save config</a></div>
+				<div class="col-auto"><h5 class="label">qr code</h5></div>
+			</div>
+			<div class="row d-flex justify-content-center">
+				<div class="col-auto">
+					<div id="qrcode" class="text-center"></div>
+				</div>
+			</div>
+			<br>
+			<div class="row d-flex justify-content-center">
+				<div class="col-auto"><a href="#" id="savebutton"><img class="icons" src="assets/img/save.png"> save config</a></div>
+			</div>
+			<div class="row d-flex justify-content-center">
+				<div class="col-auto"><a href="#" id="copysalt"><img class="icons" src="assets/img/clipboard.png"> copy salt in clipboard</a></div>
 			</div>
 			<br>
 		</div>
+		<div id="popupmessage" class="alert alert-success"  style="display: none"></div>
 	</body>
 </html>

@@ -14,6 +14,8 @@
     "open_in_tab": false
   },
   "permissions": [
-   "tabs", "<all_urls>"
+   "tabs", 
+   "<all_urls>", 
+   "storage"
   ]
 }
