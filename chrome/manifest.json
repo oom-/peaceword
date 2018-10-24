@@ -4,10 +4,14 @@
   "name": "Peaceword",
   "description": "Peaceword: Password manager",
   "version": "1.0",
-
+  "options_page": "settings.html",
   "browser_action": {
     "default_icon": "assets/img/icon.png",
     "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "settings.html",
+    "open_in_tab": false
   },
   "permissions": [
    "tabs", "<all_urls>"

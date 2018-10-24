@@ -38,6 +38,7 @@ body.backgroundcolor
 	font-family: "PeacewordFont";
 	font-size: 0.9rem;
 	text-align: center;
+	margin-bottom: 6px;
 }
 
 #autofill
@@ -49,9 +50,16 @@ body.backgroundcolor
 #copypass
 {
 	font-family: "PeacewordFont";
+	color: rgba(185,67,88);
 }
 
 input
 {
 	width: 100%;
+}
+
+#lensetting
+{
+	width: 57%;
+    height: 80%;
 }
