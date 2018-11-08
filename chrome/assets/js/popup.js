@@ -57,14 +57,40 @@ function genPassword(input) {
 		genSalt();
 	}
 	password = sha256(_e6515f433f2a7e6bb65db3981545413c._834392b2e51d87ceaf1f532a275c2b824fed163e + text);
-	
 
-	/*TODO: 
-		- Gérer les longueurs paramétrables (resalt le salt pour illimité longueur)
-		- Gérer ajout d'une majuscule
-		- Gérer ajout d'un caractère spécial
-	*/
-	password = password.substring(0, 16); //16 len
+	//Gestion longueur infini
+	while (password.length <= _e6515f433f2a7e6bb65db3981545413c.minlen) {
+		password += sha256(password);
+	}
+	password = password.substr(0, _e6515f433f2a7e6bb65db3981545413c.minlen);
+
+	//Uppercase (forced length -2 index)
+	if (_e6515f433f2a7e6bb65db3981545413c.needupercase) {
+		var index = /[a-z]/i.exec(password);
+		if (index != null) {
+			index = index.index;
+			var ltu = (str, index, replacement) => { return str.substring(0, index) + replacement + str.substring(index + replacement.length); };
+			password = ltu(password, index, password[index].toUpperCase());
+		}
+		else {
+			var up = (input.length + _e6515f433f2a7e6bb65db3981545413c.minlen) % 26;
+			up = String.fromCharCode(up);
+			var backup = password[password.length - 1];
+			password = password.substring(0, password.length -2);
+			password += up + backup;
+		}
+	}
+
+	//Special char  (forced length -1 index)
+	if (_e6515f433f2a7e6bb65db3981545413c.needspecialchar)
+	{
+		var spechar = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ';', ':', '<', '>', '=', '?', '@', '[', ']', '\\', '/', '^', '_', '{', '}', '~'];
+		var sel = (input.length + _e6515f433f2a7e6bb65db3981545413c.minlen) % spechar.length;
+		sel = spechar[sel];
+		password = password.substring(0, password.length -1);
+		password += sel;
+	}
+
 	document.getElementById('website').textContent = input;
 	document.getElementById('password').textContent = password;
 
@@ -121,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 		$('#manualinput').on("paste", () => {
-			setTimeout(() =>{
+			setTimeout(() => {
 				var a = $('#manualinput').val().trim();
 				if (a.length > 0)
 					genPassword(a);
