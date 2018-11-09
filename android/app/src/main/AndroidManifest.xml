@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfigActivity"></activity>
+        <activity android:name=".ConfigActivity" />
+        <activity android:name=".QRCodeActivity"></activity>
     </application>
 
 </manifest>
