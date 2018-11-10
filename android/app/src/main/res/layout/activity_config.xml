@@ -12,7 +12,7 @@
         android:layout_height="37dp"
         android:layout_marginEnd="116dp"
         android:layout_marginRight="116dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
@@ -120,7 +120,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:onClick="onExportSaltQRcode"
         android:text="export salt qrcode"
         android:textAllCaps="false"
@@ -129,10 +129,26 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
+        android:id="@+id/button8"
+        android:layout_width="210dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onScanQRCode"
+        android:text="scan qrcode"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <Button
         android:id="@+id/button3"
         android:layout_width="210dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"

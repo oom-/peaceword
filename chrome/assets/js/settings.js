@@ -1,6 +1,7 @@
 $(document).ready(() => {
 
     var _f0e5dda435cbf772ce575fc53eefd5e4d62e1824 = null;
+    var qrcodeimg = null;
 
     function save_options() {
         if ($('#lensetting').val() < 8) {
@@ -26,14 +27,16 @@ $(document).ready(() => {
             needspecialchar: _f0e5dda435cbf772ce575fc53eefd5e4d62e1824.needspecialchar,
             _834392b2e51d87ceaf1f532a275c2b824fed163e: salt
         };
-        console.log('options: ', options);
+        //console.log('options: ', options);
         chrome.storage.sync.set(options, () => {
-            showAlert('Salt successfully synchronized !')
+            showAlert('Salt successfully synchronized !');
+            _f0e5dda435cbf772ce575fc53eefd5e4d62e1824._834392b2e51d87ceaf1f532a275c2b824fed163e = salt;
+            $('#qrcode').empty();
+            $('#qrcode').qrcode({ width: 100, height: 100, text: _f0e5dda435cbf772ce575fc53eefd5e4d62e1824._834392b2e51d87ceaf1f532a275c2b824fed163e });
         });
     }
 
     function load_options(callback) {
-        console.log(chrome.storage);
         chrome.storage.sync.get({ minlen: "16", needupercase: true, needspecialchar: true, _834392b2e51d87ceaf1f532a275c2b824fed163e: null },
             (options) => {
                 $('#lensetting').val(options.minlen);
@@ -45,14 +48,7 @@ $(document).ready(() => {
                     $('#qrcode').html('Can\'t generate your QRCode:<br>Salt not exist');
                 }
                 else {
-                    var qrcodeimg = new QRCode($('#qrcode')[0], {
-                        text: _f0e5dda435cbf772ce575fc53eefd5e4d62e1824._834392b2e51d87ceaf1f532a275c2b824fed163e,
-                        width: 100,
-                        height: 100,
-                        colorDark: "#000000",
-                        colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel.H
-                    });
+                    $('#qrcode').qrcode({ width: 100, height: 100, text: _f0e5dda435cbf772ce575fc53eefd5e4d62e1824._834392b2e51d87ceaf1f532a275c2b824fed163e });
                 }
             });
     }

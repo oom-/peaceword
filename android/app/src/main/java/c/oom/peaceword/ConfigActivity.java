@@ -26,11 +26,12 @@ public class ConfigActivity extends AppCompatActivity {
         dt3 = findViewById(R.id.editText3);
         dt3.setTypeface(custom);
         dt2.setTypeface(custom);
-        Button b1, b2, b3, b4;
+        Button b1, b2, b3, b4, b8;
         b1 = findViewById(R.id.button);
         b2 = findViewById(R.id.button2);
         b3 = findViewById(R.id.button3);
         b4 = findViewById(R.id.button4);
+        b8 = findViewById(R.id.button8);
         b1.setTypeface(custom);
         b2.setTypeface(custom);
         b3.setTypeface(custom);
@@ -39,6 +40,7 @@ public class ConfigActivity extends AppCompatActivity {
         sw3 = findViewById(R.id.switch3);
         sw2.setTypeface(custom);
         sw3.setTypeface(custom);
+        b8.setTypeface(custom);
     }
 
     public void onExportSaltQRcode(View v)
@@ -58,6 +60,11 @@ public class ConfigActivity extends AppCompatActivity {
     }
 
     public  void onCopySaltInClipboard(View v)
+    {
+
+    }
+
+    public void onScanQRCode(View v)
     {
 
     }
