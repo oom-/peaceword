@@ -1,7 +1,6 @@
 $(document).ready(() => {
 
     var _f0e5dda435cbf772ce575fc53eefd5e4d62e1824 = null;
-    var qrcodeimg = null;
 
     function save_options() {
         if ($('#lensetting').val() < 8) {

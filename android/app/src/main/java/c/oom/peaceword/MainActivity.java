@@ -20,17 +20,20 @@ public class MainActivity extends AppCompatActivity {
 
     EditText dt = null;
     TextView ft = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button but5 = findViewById(R.id.button5);
+        Button but6 = findViewById(R.id.button6);
         dt = findViewById(R.id.editText);
         ft = findViewById(R.id.textView4);
         Typeface custom = ResourcesCompat.getFont(this, R.font.custom);
         but5.setTypeface(custom);
         dt.setTypeface(custom);
+        but6.setTypeface(custom);
 
         dt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -47,16 +50,19 @@ public class MainActivity extends AppCompatActivity {
                 GenPassword();
             }
         });
+
+        if (SaveManager.SaveExisting(this)) {
+            SaveManager.LoadConfig(this);
+        }
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         GenPassword();
     }
 
-    private void GenPassword()
-    {
+    private void GenPassword() {
         String input = dt.getText().toString();
         if (input.trim().length() == 0)
             ft.setText("?");
@@ -64,16 +70,14 @@ public class MainActivity extends AppCompatActivity {
             ft.setText(Passgenerator.Generate(input));
     }
 
-    public void copyPassword(View v)
-    {
+    public void copyPassword(View v) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("salt", ft.getText().toString());
         clipboard.setPrimaryClip(clip);
         Toast.makeText(this, "Password successfully copied in your clipboard !", Toast.LENGTH_LONG).show();
     }
 
-    public void openConfig(View v)
-    {
+    public void openConfig(View v) {
         Intent myIntent = new Intent(this, ConfigActivity.class);
         this.startActivity(myIntent);
     }

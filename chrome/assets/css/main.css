@@ -10,6 +10,13 @@ body.backgroundcolor
 	color:white;
 }
 
+#qrcode
+{
+	background-color: white;
+	border: solid 3px white;
+	height: 106px;
+}
+
 .next
 {
 	width: 100%;
@@ -30,7 +37,6 @@ body.backgroundcolor
 .label
 {
 	font-family: "PeacewordFont";
-
 }
 
 .value

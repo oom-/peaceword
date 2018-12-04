@@ -1,20 +1,26 @@
 package c.oom.peaceword;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
-import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import java.io.IOException;
+
+import static c.oom.peaceword.ScannerQrActivity.REQUEST_CAMERA_PERMISSION;
+
 
 public class ConfigActivity extends AppCompatActivity {
 
@@ -52,53 +58,58 @@ public class ConfigActivity extends AppCompatActivity {
         sw3.setChecked(Passgenerator.GetNeedSpecialChar());
     }
 
-    public void onExportSaltQRcode(View v)
-    {
+    public void onExportSaltQRcode(View v) {
         Intent myIntent = new Intent(this, QRCodeActivity.class);
         this.startActivity(myIntent);
     }
 
-    public void onImport(View v)
-    {
+    public void onImport(View v) {
         String salt = dt3.getText().toString().trim();
-        if (salt.length() >= 0)
-        {
+        if (salt.length() >= 0) {
             Passgenerator.SetSalt(salt);
             Toast.makeText(this, "Salt successfully imported !", Toast.LENGTH_LONG).show();
             dt3.setText("");
-        }
-        else
+        } else
             Toast.makeText(this, "Write a salt first !", Toast.LENGTH_LONG).show();
 
     }
 
-    public void onSaveConfig(View v)
-    {
+    public void onSaveConfig(View v) {
         String lenmin = dt2.getText().toString();
-        if (android.text.TextUtils.isDigitsOnly(lenmin))
-        {
-            Passgenerator.SetConfig(Integer.parseInt(lenmin), sw2.isChecked(), sw3.isChecked());
-            Toast.makeText(this, "Config successfully saved !", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
+        if (android.text.TextUtils.isDigitsOnly(lenmin)) {
+            int lenmint = Integer.parseInt(lenmin);
+            if (lenmint >= 8) {
+                Passgenerator.SetConfig(lenmint, sw2.isChecked(), sw3.isChecked());
+                Toast.makeText(this, "Config successfully saved !", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(this, "Min length should be superior or equal to 8 !", Toast.LENGTH_LONG).show();
+            }
+        } else {
             Toast.makeText(this, "Min length should be a numeric value !", Toast.LENGTH_LONG).show();
         }
-        /*TODO: Enregistrer la configuration dans un fichier de sauvegarde*/
+        SaveManager.SaveConfig(this);
+        finish();
 
     }
 
-    public  void onCopySaltInClipboard(View v)
-    {
+    public void onCopySaltInClipboard(View v) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("salt", Passgenerator.GetSalt());
         clipboard.setPrimaryClip(clip);
         Toast.makeText(this, "Salt successfully copied in your clipboard !", Toast.LENGTH_LONG).show();
     }
 
-    public void onScanQRCode(View v)
-    {
-
+    public void onScanQRCode(View v) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            Intent myIntent = new Intent(this, ScannerQrActivity.class);
+            this.startActivity(myIntent);
+        } else {
+            Toast.makeText(this, "You need to allow the app to access to your camera first.", Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(this, new
+                    String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+        }
     }
 }
 
