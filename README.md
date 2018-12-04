@@ -1,16 +1,20 @@
 # Peaceword
 Simple local password manager to help people that can only remember one password to have secure and different for all websites.
 
-Chrome extension here: 
-Apk here : 
-
-Load a chrome extension in unpack mode here: https://stackoverflow.com/questions/24577024/install-chrome-extension-not-in-the-store
+* Chrome extension here: https://github.com/oom-/peaceword/blob/master/chrome-peaceword.zip?raw=true
+* Apk here : https://github.com/oom-/peaceword/blob/master/android-peaceword.apk?raw=true
+* Load a chrome extension in unpack mode here: https://stackoverflow.com/questions/24577024/install-chrome-extension-not-in-the-store
 
 ## Screenshots
 ### Chrome extension
-![Mainscreen.jpg](https://raw.githubusercontent.com/oom-/peaceword/master/screenshots/Mainscreen.JPG)
-![Configscreen.jpg](https://raw.githubusercontent.com/oom-/peaceword/master/screenshots/Configscreen.JPG)
+![chrome-main.jpg](https://raw.githubusercontent.com/oom-/peaceword/master/screenshots/chrome-mainwindow.jpg)
+![chrome-config.jpg](https://github.com/oom-/peaceword/blob/master/screenshots/chrome-configwindow.jpg?raw=true)
+
 ### Android app
+![android-main.jpg](https://github.com/oom-/peaceword/blob/master/screenshots/android-mainwindow.jpg?raw=true)
+![android-config.jpg](https://github.com/oom-/peaceword/blob/master/screenshots/android-configwindow.jpg?raw=true)
+![android-scan.jpg](https://github.com/oom-/peaceword/blob/master/screenshots/android-scanwindow.jpg?raw=true)
+![android-export.jpg](https://github.com/oom-/peaceword/blob/master/screenshots/android-exportwindow.jpg?raw=true)
 
 ## How it work ?
 
